@@ -17,12 +17,29 @@ function App() {
 				{darkMode ? "☀️ الوضع النهاري" : "🌙 الوضع الليلي"}
 			</button>
 			<div className="filters">
-				<button className={filter === "all" ? "active" : ""} onClick={() => setFilter("all")}>الكل</button>
-				<button className={filter === "undone" ? "active" : ""} onClick={() => setFilter("undone")}>غير منجزة</button>
-				<button className={filter === "done" ? "active" : ""} onClick={() => setFilter("done")}>منجزة</button>
+				<button
+					className={filter === "all" ? "active" : ""}
+					onClick={() => setFilter("all")}>
+					الكل
+				</button>
+				<button
+					className={filter === "undone" ? "active" : ""}
+					onClick={() => setFilter("undone")}>
+					غير منجزة
+				</button>
+				<button
+					className={filter === "done" ? "active" : ""}
+					onClick={() => setFilter("done")}>
+					منجزة
+				</button>
 			</div>
 			<TaskInput tasks={tasks} setTasks={setTasks} />
 			<TaskList tasks={tasks} setTasks={setTasks} filter={filter} />
+			<footer>
+				Created By : Hazem,
+				<br />
+				<a href="https://www.instagram.com/hazemjaba244/">instagram</a>
+			</footer>
 		</div>
 	);
 }
