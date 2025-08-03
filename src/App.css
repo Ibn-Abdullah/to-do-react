@@ -47,14 +47,14 @@ h1 {
 	left: 50px;
 }
 .toggle-language {
-	padding: 11px;
+	padding: 9.5px;
 	position: absolute;
 	top: 50px;
 	right: 50px;
 }
 .toggle-language:hover,
 .toggle-theme:hover {
-	font-size: 25px;
+	font-size: 22px;
 }
 .filters {
 	margin-bottom: 20px;
@@ -261,6 +261,9 @@ footer {
 	.task-input input,
 	.task-input button {
 		width: 100%;
+	}
+	.task-input button {
+		width: 100px;
 	}
 
 	.filters {
