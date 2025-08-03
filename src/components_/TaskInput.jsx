@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function TaskInput({ tasks, setTasks }) {
+export default function TaskInput({ tasks, setTasks, t }) {
 	const [input, setInput] = useState("");
 
 	function handleChange(e) {
@@ -20,11 +20,11 @@ export default function TaskInput({ tasks, setTasks }) {
 		<div className="task-input">
 			<input
 				type="text"
-				placeholder="أدخل مهمة جديدة..."
+				placeholder={t.placeholder}
 				value={input}
 				onChange={handleChange}
 			/>
-			<button onClick={addTask}>إضافة</button>
+			<button onClick={addTask}>{t.add}</button>
 		</div>
 	);
 }

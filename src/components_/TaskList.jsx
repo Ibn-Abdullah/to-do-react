@@ -1,4 +1,4 @@
-export default function TaskList({ tasks, setTasks, filter }) {
+export default function TaskList({ tasks, setTasks, filter, t }) {
 	function handleComplete(id) {
 		const updatedTasks = tasks.map((task) =>
 			task.id === id ? { ...task, completed: !task.completed } : task
@@ -18,14 +18,12 @@ export default function TaskList({ tasks, setTasks, filter }) {
 	return (
 		<>
 			{tasks.length === 0 ? (
-				<p className="empty-text">لا توجد مهام حالياً</p>
+				<p className="empty-text">{t.noTasks}</p>
 			) : (
 				<strong className="task-counter">
-					{filter === "all" && `عدد المهام الكلية: ${filteredTasks.length} 📝`}
-					{filter === "done" &&
-						`عدد المهام المنجزة: ${filteredTasks.length} ✅`}
-					{filter === "undone" &&
-						`عدد المهام غير المنجزة: ${filteredTasks.length} 🔄`}
+					{filter === "all" && `${t.noOfAll} ${filteredTasks.length} 📝`}
+					{filter === "done" && `${t.noOfDone} ${filteredTasks.length} ✅`}
+					{filter === "undone" && `${t.noOfNot} ${filteredTasks.length} 🔄`}
 				</strong>
 			)}
 			<ul className="task-list">
@@ -42,7 +40,7 @@ export default function TaskList({ tasks, setTasks, filter }) {
 						</div>
 					</li>
 				))}
-				{tasks.length === 5 ? alert("ركز") : ""}
+				{tasks.length === 5 ? alert("!!!!!!!!!!!!!") : ""}
 			</ul>
 		</>
 	);
