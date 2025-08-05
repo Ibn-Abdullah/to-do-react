@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function TaskInput({ tasks, setTasks, t }) {
 	const [input, setInput] = useState("");
@@ -7,7 +8,10 @@ export default function TaskInput({ tasks, setTasks, t }) {
 		setInput(e.target.value);
 	}
 	function addTask() {
-		if (input.trim() === "") return;
+		if (input.trim() === "") {
+			toast.warn(t.enterValidTask);
+			return;
+		}
 		const newTask = {
 			id: Date.now(),
 			text: input,

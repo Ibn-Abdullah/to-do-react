@@ -5,6 +5,10 @@ import { useState } from "react";
 import translations from "./translations";
 import TaskInput from "./components_/TaskInput";
 import TaskList from "./components_/TaskList";
+import { ToastContainer } from "react-toastify";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 	const [tasks, setTasks] = useState([]);
@@ -29,6 +33,8 @@ function App() {
 
 	return (
 		<div className={`app-container ${darkMode ? "dark" : ""}`}>
+			<ToastContainer position="top-center" autoClose={3000} />
+			<SpeedInsights />
 			<header>
 				<h1>{t.title}</h1>
 				<button className="toggle-theme" onClick={toggleDarkMode}>

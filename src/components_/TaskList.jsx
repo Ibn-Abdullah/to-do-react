@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 export default function TaskList({ tasks, setTasks, filter, t }) {
 	function handleComplete(id) {
 		const updatedTasks = tasks.map((task) =>
@@ -40,7 +41,9 @@ export default function TaskList({ tasks, setTasks, filter, t }) {
 						</div>
 					</li>
 				))}
-				{tasks.length === 5 ? alert("!!!!!!!!!!!!!") : ""}
+				{tasks.length === 5
+					? toast.warn("ركز فأنت عليك الكثير من المهمات")
+					: ""}
 			</ul>
 		</>
 	);

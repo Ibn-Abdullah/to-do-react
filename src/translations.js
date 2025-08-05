@@ -13,6 +13,7 @@ const translations = {
 		noOfDone: "عدد المهام المكتملة:",
 		noOfNot: "عدد المهام غير مكتملة:",
 		creator: "تم إنشاء هذا الموقع بواسطة : حازم عبدالله",
+		enterValidTask: "الرجاء إدخال مهمة",
 	},
 	en: {
 		title: "Task List",
@@ -28,6 +29,7 @@ const translations = {
 		noOfDone: "Number of completed tasks:",
 		noOfNot: "Number of incompleted tasks:",
 		creator: "Created By : Hazem Abdullah",
+		enterValidTask: "Please Enter a Task",
 	},
 };
 
