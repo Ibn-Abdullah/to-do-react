@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import translations from "./translations";
 import TaskInput from "./components_/TaskInput";
 import TaskList from "./components_/TaskList";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import "react-toastify/dist/ReactToastify.css";
-
+setTimeout(() => {
+	toast.info("This version stores data !!!", 2000);
+});
 function App() {
 	const [tasks, setTasks] = useState(() => {
 		const saved = localStorage.getItem("tasks");
@@ -35,7 +37,6 @@ function App() {
 		// حفظ الثيم في localStorage
 		localStorage.setItem("theme", darkMode ? "dark" : "light");
 	}, [darkMode]);
-	const [filter, setFilter] = useState("all");
 	const [language, setLanguage] = useState(() => {
 		return localStorage.getItem("language") || "ar";
 	});
@@ -43,6 +44,8 @@ function App() {
 		// حفظ اللغة في localStorage
 		localStorage.setItem("language", language);
 	}, [language]);
+	const [filter, setFilter] = useState("all");
+
 	const t = translations[language] || translations["ar"];
 
 	function toggleDarkMode() {

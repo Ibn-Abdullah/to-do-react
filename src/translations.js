@@ -1,3 +1,5 @@
+import { version } from "react";
+
 const translations = {
 	ar: {
 		title: "قائمة المهام",

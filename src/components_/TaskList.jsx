@@ -10,6 +10,7 @@ export default function TaskList({ tasks, setTasks, filter, t }) {
 	function handleDelete(id) {
 		const updatedTasks = tasks.filter((task) => task.id !== id);
 		setTasks(updatedTasks);
+		toast.error("تم حذم المهمة");
 	}
 	const filteredTasks = tasks.filter((task) => {
 		if (filter === "done") return task.completed;
