@@ -1,21 +1,49 @@
 import "./App.css";
 import { FaItchIo } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import translations from "./translations";
 import TaskInput from "./components_/TaskInput";
 import TaskList from "./components_/TaskList";
 import { ToastContainer } from "react-toastify";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-	const [tasks, setTasks] = useState([]);
-	const [darkMode, setDarkMode] = useState(false);
+	const [tasks, setTasks] = useState(() => {
+		const saved = localStorage.getItem("tasks");
+		if (saved) {
+			try {
+				return JSON.parse(saved);
+			} catch {
+				return [];
+			}
+		}
+		return [];
+	});
+	useEffect(() => {
+		localStorage.setItem("tasks", JSON.stringify(tasks));
+	}, [tasks]);
+	const [darkMode, setDarkMode] = useState(() => {
+		return localStorage.getItem("theme") === "dark";
+	});
+	useEffect(() => {
+		// تحديث الكلاس الخاص بالثيم في body
+		document.body.classList.remove("dark-body", "light-body");
+		document.body.classList.add(darkMode ? "dark-body" : "light-body");
+
+		// حفظ الثيم في localStorage
+		localStorage.setItem("theme", darkMode ? "dark" : "light");
+	}, [darkMode]);
 	const [filter, setFilter] = useState("all");
-	const [language, setLanguage] = useState("ar");
-	const t = translations[language]; // t = الترجمة حسب اللغة الحالية
+	const [language, setLanguage] = useState(() => {
+		return localStorage.getItem("language") || "ar";
+	});
+	useEffect(() => {
+		// حفظ اللغة في localStorage
+		localStorage.setItem("language", language);
+	}, [language]);
+	const t = translations[language] || translations["ar"];
 
 	function toggleDarkMode() {
 		setDarkMode((prev) => {
