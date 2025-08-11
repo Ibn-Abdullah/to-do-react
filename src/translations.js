@@ -15,7 +15,12 @@ const translations = {
 		noOfDone: "عدد المهام المكتملة:",
 		noOfNot: "عدد المهام غير مكتملة:",
 		creator: "تم إنشاء هذا الموقع بواسطة : حازم عبدالله",
-		enterValidTask: "الرجاء إدخال مهمة",
+		enterValidTask: "! الرجاء إدخال مهمة",
+		wannaDeleteThisTask: "هل أنت متأكد من حذف هذه المهمة؟",
+		deleteAll: "حذف الكل",
+		ruSureToDeleteAll: "هل أنت متأكد من حذف جميع المهام؟",
+		allDeleted: "تم حذف جميع المهام.",
+		itisAlreadyEmpty: "لا يوجد مهام بالفعل",
 	},
 	en: {
 		title: "Task List",
@@ -32,6 +37,11 @@ const translations = {
 		noOfNot: "Number of incompleted tasks:",
 		creator: "Created By : Hazem Abdullah",
 		enterValidTask: "Please Enter a Task",
+		wannaDeleteThisTask: "Are you sure you want to delete this task?",
+		deleteAll: "Delete All",
+		ruSureToDeleteAll: "Are you sure you want to delete all tasks?",
+		allDeleted: "All tasks have been deleted.",
+		itisAlreadyEmpty: "There are no tasks already",
 	},
 };
 

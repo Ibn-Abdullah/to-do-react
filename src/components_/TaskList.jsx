@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 export default function TaskList({ tasks, setTasks, filter, t }) {
 	function handleComplete(id) {
 		const updatedTasks = tasks.map((task) =>
@@ -8,25 +7,28 @@ export default function TaskList({ tasks, setTasks, filter, t }) {
 	}
 
 	function handleDelete(id) {
+		const confirmDelete = window.confirm(t.wannaDeleteThisTask);
+		if (!confirmDelete) return;
 		const updatedTasks = tasks.filter((task) => task.id !== id);
 		setTasks(updatedTasks);
-		toast.error("تم حذم المهمة");
 	}
 	const filteredTasks = tasks.filter((task) => {
 		if (filter === "done") return task.completed;
 		if (filter === "undone") return !task.completed;
 		return true; // all
 	});
+	const taskCountText =
+		filter === "all"
+			? `${t.noOfAll} ${filteredTasks.length} 📝`
+			: filter === "done"
+			? `${t.noOfDone} ${filteredTasks.length} ✅`
+			: `${t.noOfNot} ${filteredTasks.length} 🔄`;
 	return (
 		<>
 			{tasks.length === 0 ? (
 				<p className="empty-text">{t.noTasks}</p>
 			) : (
-				<strong className="task-counter">
-					{filter === "all" && `${t.noOfAll} ${filteredTasks.length} 📝`}
-					{filter === "done" && `${t.noOfDone} ${filteredTasks.length} ✅`}
-					{filter === "undone" && `${t.noOfNot} ${filteredTasks.length} 🔄`}
-				</strong>
+				<p className="task-counter">{taskCountText}</p>
 			)}
 			<ul className="task-list">
 				{filteredTasks.map((task) => (
@@ -42,9 +44,6 @@ export default function TaskList({ tasks, setTasks, filter, t }) {
 						</div>
 					</li>
 				))}
-				{tasks.length === 5
-					? toast.warn("ركز فأنت عليك الكثير من المهمات")
-					: ""}
 			</ul>
 		</>
 	);
